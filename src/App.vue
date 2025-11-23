@@ -1,11 +1,18 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { provide, ref } from 'vue';
+
+import ThemeChange from '@/components/ThemeChange.vue'
+import type { ThemeType } from "@/model/ThemeType";
+const theme = ref<ThemeType>(null);
+provide('theme', theme);
+
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <n-config-provider :theme="theme">
+    <theme-change></theme-change>
+    <n-global-style />
+  </n-config-provider>
 </template>
 
 <style scoped></style>
