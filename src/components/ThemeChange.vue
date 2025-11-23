@@ -1,24 +1,28 @@
 <script setup lang="ts">
-import { inject, type Ref } from 'vue';
+import { inject } from 'vue';
 
-// 职责：主题切换
-import { darkTheme } from 'naive-ui';
-import type { ThemeType } from "@/model/ThemeType";
-const theme = inject<Ref<ThemeType>>('theme');
-const changeTheme = (targetTheme: ThemeType) => {
-  if (theme) {
-    theme.value = targetTheme;
-  }
+/* 职责：调用App.vue中的业务函数进行主题切换 */
+import type { ThemeType } from '@/model/ThemeType';
+const toggleTheme = inject<() => void>('toggleTheme');
+const setTheme = inject<(theme: ThemeType) => void>('setTheme');
+const getTheme = inject<() => ThemeType>('getTheme');
+
+const switchTheme = (theme: ThemeType) => {
+  setTheme?.(theme);
 }
 
-
+const getButtonTheme = (): ThemeType => {
+  return getTheme?.() || 'light';
+}
 </script>
 
 <template>
   <n-card class="theme-change-card">
-    <n-space class="theme-change-space">
-      <n-button @click="changeTheme(darkTheme)">dark</n-button>
-      <n-button @click="changeTheme(null)">light</n-button>
+    <n-space class="theme-change-space" style="justify-content: space-between">
+      <n-button @click="switchTheme('dark')" :type="getButtonTheme() === 'dark' ? 'primary' : 'default'">dark</n-button>
+      <n-button @click="switchTheme('light')"
+        :type="getButtonTheme() === 'light' ? 'primary' : 'default'">light</n-button>
+      <n-button @click="toggleTheme">toggle</n-button>
     </n-space>
   </n-card>
 </template>
@@ -27,19 +31,15 @@ const changeTheme = (targetTheme: ThemeType) => {
 .theme-change {
 
   &-card {
-    width: 200px;
+    width: 250px;
   }
 
   &-space {
     width: 100%;
-    justify-content: space-between;
   }
 }
 
 .theme-change-card :deep(.n-card__content) {
   padding: 4px;
 }
-
-// :deep(.n-card__content) {
-//   padding: 4px;
-// }</style>
+</style>
