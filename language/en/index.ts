@@ -1,0 +1,4 @@
+const language = {
+}
+
+export { language }

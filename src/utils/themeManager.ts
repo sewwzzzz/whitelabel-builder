@@ -1,4 +1,4 @@
-import type { ThemeType } from "@/model/ThemeType";
+import type { ThemeType } from "@/model/theme/ThemeType";
 
 export default class ThemeManager {
   private static currentTheme: ThemeType = 'light';
