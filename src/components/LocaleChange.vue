@@ -7,22 +7,7 @@ onUpdated(() => {
 })
 
 /* 职责：调用App.vue中的业务函数进行主题切换 */
-import type { LocaleType } from '@/model/locale/LocaleType';
-import { useI18n } from 'vue-i18n';
-const toggleLocale = inject<() => void>('toggleLocale');
-const setLocale = inject<(newLocale: LocaleType) => void>('setLocale');
-const getLocale = inject<() => LocaleType>('getLocale');
 
-let { t } = useI18n();
-
-const switchLocale = (newLocale: LocaleType) => {
-  setLocale?.(newLocale);
-}
-
-const getButtonLocale = (): LocaleType => {
-  console.log("2")
-  return getLocale?.() || 'zh';
-}
 </script>
 
 <template>

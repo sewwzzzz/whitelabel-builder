@@ -1,4 +1,4 @@
-import type { LocaleType } from "@/model/locale/LocaleType";
+import type { LocaleType } from "@/model/locale/LocaleEnum";
 
 export default class LocaleManager {
   private static currentLocale: LocaleType = 'en';

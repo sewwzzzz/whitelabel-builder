@@ -17,4 +17,9 @@ const i18n = createI18n({
 })
 app.use(i18n);
 
+// pinia
+import { createPinia } from 'pinia'
+const pinia = createPinia();
+app.use(pinia);
+
 app.mount('#app')
