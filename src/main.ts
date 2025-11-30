@@ -22,4 +22,7 @@ import { createPinia } from 'pinia'
 const pinia = createPinia();
 app.use(pinia);
 
+// 字体图标样式
+import './icons/builder-font.less'
+
 app.mount('#app')

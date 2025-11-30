@@ -1,42 +1,41 @@
 <script setup lang="ts">
-import { inject, onUpdated } from 'vue';
+import { onUpdated } from 'vue';
 
 /* 钩子函数 */
 onUpdated(() => {
   console.log("LocaleChange updated");
 })
 
+/* props */
+import { defineProps } from 'vue';
+const props = defineProps({
+  width: String
+})
+
 /* 职责：调用App.vue中的业务函数进行主题切换 */
+import { useLocaleStore } from '@/pinia';
+import { options } from '@/config/locale/localeOptions';
+const localeStore = useLocaleStore();
+
+// 设置语言
+const handleLocale = (value: string) => {
+  localeStore.setLocale(value);
+}
+const localeOptions = options;
+
+/* 国际化 */
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n();
 
 </script>
 
 <template>
-  <n-card class="locale-change-card">
-    <n-space class="locale-change-space" style="justify-content: space-between">
-      <n-button @click="switchLocale('zh')" :type="getButtonLocale() === 'zh' ? 'primary' : 'default'">{{
-        t('component.localeChange.zh') }}</n-button>
-      <n-button @click="switchLocale('en')" :type="getButtonLocale() === 'en' ? 'primary' : 'default'">{{
-        t('component.localeChange.en') }}</n-button>
-      <n-button @click="toggleLocale">{{ t('component.localeChange.toggle') }}</n-button>
-    </n-space>
-    {{ t('component.localeChange.toggle') }}
-  </n-card>
-  {{ t('component.localeChange.toggle') }}
+  <n-select class="locale-change" :style="{ width: props.width + 'px' }" :value="localeStore.locale"
+    :options="localeOptions" :placeholder="t('component.localeChange.locale')" @update:value="handleLocale"
+    :ellipsis-tag-popover-props="true">
+  </n-select>
 </template>
 
 <style scoped lang="less">
-.locale-change {
-
-  &-card {
-    width: 250px;
-  }
-
-  &-space {
-    width: 100%;
-  }
-}
-
-.locale-change-card :deep(.n-card__content) {
-  padding: 4px;
-}
+.locale-change {}
 </style>

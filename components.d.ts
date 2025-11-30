@@ -11,13 +11,19 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    BodyLeft: typeof import('./src/pages/BodyLeft.vue')['default']
+    BodyMiddle: typeof import('./src/pages/BodyMiddle.vue')['default']
+    BodyRight: typeof import('./src/pages/BodyRight.vue')['default']
+    BodyTop: typeof import('./src/pages/BodyTop.vue')['default']
     LocaleChange: typeof import('./src/components/LocaleChange.vue')['default']
     NButton: typeof import('naive-ui')['NButton']
     NCard: typeof import('naive-ui')['NCard']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
     NDatePicker: typeof import('naive-ui')['NDatePicker']
     NGlobalStyle: typeof import('naive-ui')['NGlobalStyle']
+    NSelect: typeof import('naive-ui')['NSelect']
     NSpace: typeof import('naive-ui')['NSpace']
+    NSwitch: typeof import('naive-ui')['NSwitch']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ThemeChange: typeof import('./src/components/ThemeChange.vue')['default']

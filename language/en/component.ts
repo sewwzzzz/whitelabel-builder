@@ -1,12 +1,8 @@
 const language = {
   localeChange: {
-    zh: 'zh-CN',
-    en: 'en-US',
-    toggle: 'toggle',
+    locale: "language"
   },
   themeChange: {
-    dark: 'dark',
-    light: 'light',
     toggle: 'toggle',
   },
 }

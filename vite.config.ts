@@ -30,6 +30,12 @@ export default defineConfig({
       ]
     }),
     Components({
+      dts: true, // 启用类型声明文件生成
+      dirs: [
+        'src/components',
+        'src/pages',
+        // 添加其他包含组件的目录
+      ],
       resolvers: [NaiveUiResolver()]
     })
   ],

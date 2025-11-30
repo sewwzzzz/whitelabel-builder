@@ -1,39 +1,35 @@
 <script setup lang="ts">
-import { inject, onUpdated } from 'vue';
+import { onUpdated, ref } from 'vue';
 
 /* 钩子函数 */
 onUpdated(() => {
   console.log("ThemeChange updated");
 })
-/* 职责：调用App.vue中的业务函数进行主题切换 */
 
+/* 职责：调用App.vue中的业务函数进行主题切换 */
+import { SWITCH_CONFIG } from '@/config/theme/themeChecks';
+import { useThemeStore } from '@/pinia';
+
+const themeStore = useThemeStore();
+const switchConfig = SWITCH_CONFIG;
+const handleTheme = (value: string) => {
+  themeStore.setTheme(value);
+}
 </script>
 
 <template>
-  <n-card class="theme-change-card">
-    <n-space class="theme-change-space" style="justify-content: space-between">
-      <n-button @click="switchTheme('dark')" :type="getButtonTheme() === 'dark' ? 'primary' : 'default'">{{
-        t('component.themeChange.dark') }}</n-button>
-      <n-button @click="switchTheme('light')" :type="getButtonTheme() === 'light' ? 'primary' : 'default'">{{
-        t('component.themeChange.light') }}</n-button>
-      <n-button @click="toggleTheme">{{ t('component.themeChange.toggle') }}</n-button>
-    </n-space>
-  </n-card>
+  <n-switch class="theme-change" :value="themeStore.theme" :checked-value="switchConfig.CHECKED"
+    :default-value="switchConfig.DEFAULT" :unchecked-value="switchConfig.UNCHECKED" @update:value="handleTheme">
+    <template #checked-icon>
+      <span class="builder-icon-dark builder-icon-container"></span>
+    </template>
+    <template #unchecked-icon>
+      <span class="builder-icon-light builder-icon-container">
+      </span>
+    </template>
+  </n-switch>
 </template>
 
 <style scoped lang="less">
-.theme-change {
-
-  &-card {
-    width: 250px;
-  }
-
-  &-space {
-    width: 100%;
-  }
-}
-
-.theme-change-card :deep(.n-card__content) {
-  padding: 4px;
-}
+.theme-change {}
 </style>
