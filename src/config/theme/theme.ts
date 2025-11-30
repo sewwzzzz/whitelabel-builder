@@ -1,4 +1,4 @@
-import { ThemeEnum } from "@/model/theme/ThemeEnum";
+import { ThemeEnum } from "@/types/theme/ThemeEnum";
 import { darkTheme } from "naive-ui";
 
 export const themeConfig = {

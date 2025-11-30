@@ -1,5 +1,5 @@
 import { themeConfig } from "@/config/theme/theme";
-import { ThemeEnum } from "@/model/theme/ThemeEnum";
+import { ThemeEnum } from "@/types/theme/ThemeEnum";
 import { defineStore } from "pinia";
 import { computed, ref } from "vue";
 

@@ -1,6 +1,6 @@
 import { naiveDateLocaleConfig } from "@/config/locale/dateLocale";
 import { naiveLocaleConfig } from "@/config/locale/locale";
-import { LocaleEnum } from "@/model/locale/LocaleEnum";
+import { LocaleEnum } from "@/types/locale/LocaleEnum";
 import { defineStore } from "pinia";
 import { computed, ref } from "vue";
 import { useI18n } from "vue-i18n";

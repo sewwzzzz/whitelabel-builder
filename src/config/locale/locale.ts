@@ -1,4 +1,4 @@
-import { LocaleEnum } from "@/model/locale/LocaleEnum";
+import { LocaleEnum } from "@/types/locale/LocaleEnum";
 import { enUS, zhCN } from "naive-ui";
 
 export const naiveLocaleConfig = {

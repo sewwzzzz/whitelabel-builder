@@ -32,10 +32,14 @@ const { t } = useI18n();
 <template>
   <n-select class="locale-change" :style="{ width: props.width + 'px' }" :value="localeStore.locale"
     :options="localeOptions" :placeholder="t('component.localeChange.locale')" @update:value="handleLocale"
-    :ellipsis-tag-popover-props="true">
+    :ellipsis-tag-popover-props="{
+      trigger: 'hover',
+      placement: 'bottom',
+      showArrow: true,
+    }">
   </n-select>
 </template>
 
 <style scoped lang="less">
-.locale-change {}
+.locale-change{}
 </style>
